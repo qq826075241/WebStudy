@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* CSS中各选择器权重：
+        元素选择器：1
+        calss选择器：10
+        id选择器：100
+        内联样式：1000
+
+        优先级从高到低：内联样式 > id选择器 > 类选择器 > 元素选择器 */
+
+        * {
+            color: blue;
+            font-size: 60px;
+        }
+
+        p {
+            color: orange;
+            font-size: 45px; 
+        }
+
+        .text {
+            color: red;
+            font-size: 30px;
+        }
+
+        #desc {
+            color: green;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>全局选择器：*</h3>
+    <h3>元素选择器：标签名称</h3>
+    <h3>类选择器：class属性名（.）</h3>
+    <h3>ID选择器：id属性名（#）</h3>
+
+    <p id="desc" class="text" >我是P标签内容</p>
+    
+</body>
+</html>
