@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @keyframes anim {
+            0% {
+                background-color: red;
+            }
+
+            25% {
+                background-color: green;
+            }
+
+            50% {
+                background-color: yellow;
+            }
+
+            75% {
+                background-color: orchid;
+            }
+
+            100% {
+                background-color: blue;
+            }
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 40px auto;
+            /* 动画属性：名称 时间 速度 延迟 重复次数 方向*/
+            animation: anim 3s linear 1s infinite alternate;
+        }
+
+        div:hover {
+           animation-play-state: paused;
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
