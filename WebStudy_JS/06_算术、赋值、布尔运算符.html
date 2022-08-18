@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num1 = 100;
+        var num2 = 10;
+
+        console.log("算术运算符-----------------");
+        // 加法
+        console.log(num1 + num2);
+        // 减法
+        console.log(num1 - num2);
+        // 乘法
+        console.log(num1 * num2);
+        // 除法
+        console.log(num1 / num2);
+        // 取余
+        console.log(num1 % num2);
+        // 自增/自减
+        console.log(num1++);   // ++放在变量前会影响输出结果
+        console.log(++num1);
+        console.log(--num2);
+    
+        console.log("赋值运算符-----------------");
+        var num3 = 100;
+        var num4 = num3;
+        var num5 = "100";
+        console.log(num4);
+        console.log(num3 > num5);
+        console.log(num3 == num5);     // ==代表数值比较，只会比较数值是否相同，所以返回true
+        console.log(num3 === num5);    // ===代表严格比较，会比较数值与类型是否都相同，所以返回false
+        console.log(num3 != num5);     // 与==相反
+        console.log(num3 !== num5);    // 与===相反
+
+        console.log("布尔运算符-----------------");
+        var flag = false;
+
+        console.log(!flag);
+        
+        // 以下均返回true
+        console.log(!null);
+        console.log(!undefined);
+        console.log(!0);
+        console.log(!"");
+        console.log(!NaN);
+        console.log(!false);
+
+        // 以下均返回false
+        console.log(!100);
+        console.log(!'cqq');
+        console.log(!{name: 'cqq'});
+
+        // && || 运算符
+        console.log(num1 > num2 && 10 > 5);
+        console.log(num1 < num2 && 10 > 5);
+        console.log(num1 < num2 || 10 > 5);
+        
+    </script>
+</body>
+</html>
