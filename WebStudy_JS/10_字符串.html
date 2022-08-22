@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str1 = "cqqcqq";
+        var str2 = "cqq'cqq'cqq";   // 单双引号可互相嵌套
+        var str3 = "cqq\"cqq'cqq";   // 反斜杠\用于引号转义
+        var str4 = "cqq\
+        cqq\
+        cqq";                       // 反斜杠\用于换行
+        console.log(str2);
+        console.log(str3);
+
+        console.log('字符串方法----------------');
+        var str5 = 'cqqcqq';
+        var str6 = '666666';
+
+        // length方法，用于返回字符串长度
+        console.log('length方法----------------');
+        console.log(str5.length);
+
+        // charAt方法，用于返回指定位置字符
+        console.log('charAt方法----------------');
+        console.log(str5.charAt(3));
+        console.log(str5.charAt(10));   // 角标越界将输出空字符串
+
+        // concat方法，用于多个字符串连接
+        console.log('concat方法----------------');
+        console.log(str5.concat(str6));
+        var str7 = 'cool';
+        console.log(str5.concat(str6,str7));    // 可传递多个参数
+        var int1 = 100;
+        console.log(str5.concat(str6,str7,int1));   // 可传递数值类型
+        var res = str5 + str6 + str7 + int1;    // 也可使用+号直接将字符串连接（开发常用）
+        console.log(res);
+
+        // substring方法，用于截取字符串
+        console.log('substring方法----------------');
+        var str8 = 'cqq666cool';
+        console.log(str8.substring(3,6));   // 两个参数标记开始位置与结束位置
+        console.log(str8.substring(3));   // 如果省略第二个参数，则默认从标记位置到字符串结尾
+        console.log(str8.substring(6,3));   // 如将两参数颠倒，则运行时会自动将顺序倒转
+        console.log(str8.substring(-2,3));   // 如输入负数，则会自动转成0
+        console.log(str8.substring(3,-1));   // 会经历两次转换，变成（0,3）
+
+        // substr方法，与substring方法作用相同，但其第二个参数为字符串长度，而非结束位置
+        console.log('substr方法----------------');
+        var str9 = 'cqq666cool';
+        console.log(str9.substr(3,3));
+        console.log(str9.substr(3));     // 如果省略第二个参数，则默认从标记位置到字符串结尾
+        console.log(str9.substr(3,10));     // 如长度超过字符串长度，则会返回到字符串结尾
+        console.log(str9.substr(-3,3));     // 如第一个参数是负数，则表示倒数计算的字符位置
+
+        // indexof方法，用于确定某个字符串在另一字符串中第一次出现的位置
+        console.log('indexof方法----------------');
+        var str10 = 'HelloWorld!';
+        console.log(str10.indexOf("o"));  // 如果字符存在，返回字符位置
+        console.log(str10.indexOf("g"));  // 如果字符不存在，返回 -1
+        console.log(str10.indexOf("World"));  // 返回首字符的位置
+        console.log(str10.indexOf("o",5));  // 从指定位置开始查找
+
+        // trim方法，用于去除字符串中两端的空格与换行符、制表符、回车符，不影响原字符串
+        console.log('trim方法----------------');
+        var name1 = "   cqq666cool   ";
+        console.log(name1.trim());
+        var name2 = "\r\ncqq666cool\t";
+        console.log(name2.trim());
+        var name3 = "cqq\r\n6 66\tcool";
+        console.log(name3.trim());    // 此方法无法去除字符串中间的空格、换行符、制表符、回车符
+        console.log(name1.trimStart());  // 单独去掉头部空格
+        console.log(name1.trimEnd());  // 单独去掉尾部空格
+
+        // split方法，用于按给定规则分割字符串，返回一个字符串数组
+        console.log('split方法----------------');
+        var str11 = 'cqq,666,cool';
+        console.log(str11.split(","));
+        console.log(str11.split(""));   // 如果传空字符串，则将字符串每个字符都分割开
+        console.log(str11.split("",5)); // 可指定长度
+    </script>
+</body>
+</html>
