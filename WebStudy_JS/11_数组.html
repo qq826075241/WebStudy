@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 初始化方式1 
+        var arr = ['cqq', '666', 'cool'];
+        // 初始化方式2
+        var names = [];
+        names[0] = 'cqq';
+        names[1] = '666';
+        names[2] = 'cool';
+        console.log(names);
+        // 多维数组
+        var arrs = ['100', '200', ['300', '400']];
+        console.log(arrs);
+
+        // 下标用于赋值与读取
+        console.log(arrs[1]);
+
+        // 遍历 方式一
+        for(var i = 0;i<arr.length;i++) {
+            console.log(arr[i]);
+        }
+        // 遍历 方式二
+        for(var i in arr) {
+            console.log(arr[i]);
+        }
+        // 遍历 方式三
+        var i = 0;
+        while(i<arr.length) {
+            console.log(arr[i]);
+            i++;
+        }
+
+    </script>
+</body>
+</html>
