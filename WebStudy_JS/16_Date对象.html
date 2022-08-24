@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(Date.now());
+
+        console.log(new Date(Date.now()));
+        console.log(new Date());
+
+        console.log(new Date().getDate());  // 获取当前日期（日）
+        console.log(new Date().getDay());   // 获取当前是星期几，0为星期日
+        console.log(new Date().getFullYear());   // 获取当前年份
+        console.log(new Date().getMonth() + 1);   // 获取当前月份，0代表1月
+
+        var year = new Date(1661326186215).getFullYear();
+        var month = new Date(1661326186215).getMonth() + 1;
+        var day = new Date(1661326186215).getDate();
+        console.log(year+'-'+month+'-'+day);
+
+        leftDays();
+
+        function leftDays() {
+            var today = new Date();
+            var endYear = new Date(today.getFullYear(), 11, 31, 23, 59, 59, 999);
+            console.log(Math.floor((endYear.getTime() - today.getTime())/(24 * 60 * 60 * 1000)));
+        }
+    </script>
+</body>
+</html>

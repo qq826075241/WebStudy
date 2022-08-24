@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Hello1</div>
+    <div>Hello2</div>
+
+    <p class="text">Hello3</p>
+
+    <form name="login"></form>
+
+    <p id="cqq">Hello4</p>
+    
+    <p class="nav">Hello5</p>
+
+    <p class="nav">Hello6</p>
+
+    <p id="container"></p>
+
+    <script>
+        // 获取元素
+        // 方法一，通过tag名获取
+        var divs = document.getElementsByTagName("div")[0];
+        divs.innerHTML = "Hello World 1";
+
+        // 方法二，通过class名获取
+        var divs2 = document.getElementsByClassName("text")[0];
+        divs2.innerHTML = "Hello World 2";
+
+        // 方法三，通过name获取（使用率较低）
+        var divs3 = document.getElementsByName("login")[0];
+
+        // 方法四，通过id获取（使用率最高）
+        var divs4 = document.getElementById("cqq");
+        divs4.innerHTML = "Hello World 3";
+
+        // 方法四，通过querySelector获取，返回匹配css选择器的第一个节点
+        var divs5 = document.querySelector(".nav");
+        divs5.innerHTML = "Hello World 4";
+
+        // 方法五，通过querySelectorAll获取，返回所有匹配的节点
+        var divs6 = document.querySelectorAll(".nav")[1];
+        divs6.innerHTML = "Hello World 5";
+        
+        // 创建元素
+        var text = document.createElement("p");  // 创建标签
+        var content = document.createTextNode("我是文本");   // 创建文本
+        var id = document.createAttribute("id");
+        id.value = "cqq666"
+        text.appendChild(content);
+        console.log(text);
+        console.log(id);
+        text.setAttributeNode(id);
+        console.log(text);
+
+        var container = document.getElementById("container");
+        container.appendChild(text);
+    </script>
+</body>
+</html>
