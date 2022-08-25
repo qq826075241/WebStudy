@@ -13,6 +13,8 @@
             border-radius: 150px;
             background-color: red;
             position: absolute;
+            box-shadow: 0px 0px 50px red;
+			animation: 1s aj infinite;
         }
 
         .right {
@@ -22,14 +24,28 @@
             background-color: red;
             position: absolute;
             left: 180px;
+            box-shadow: 0px 0px 50px red;
+			animation: 1s aj infinite;
         }
 
         .bottom {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             background-color: red;
-            transform: translate(80px,80px) rotate(45deg);
+            position: absolute;
+            left: 120px;
+            top: 150px;
+            transform:rotate(45deg);
+            box-shadow: 0px 0px 50px red;
+			animation: 1s aj infinite;
         }
+
+        /*动画'*/
+			@keyframes aj{
+				0%{transform: scale(1) rotate(45deg);}
+				50%{transform: scale(1.1) rotate(45deg);}
+				100%{transform: scale(1) rotate(45deg);}
+			}
     </style>
 
 
