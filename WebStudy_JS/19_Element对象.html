@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: orange;
+        }
+
+        .boxx {
+            width: 100px;
+            height: 200px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box" id="root">Hello</div>
+    <div class="box1" id="root1">Hello</div>
+    
+    <script>
+        var root = document.getElementById("root");
+        root.id = "roots";
+        root.className = "boxx";
+        root.classList.add("myboxx");
+        console.log(root.classList);
+        root.classList.remove("boxx");
+        console.log(root.classList);
+        root.classList.toggle("boxx");  // 如果boxx不存在就加入，否则移除
+        console.log(root.classList);
+        console.log(root.classList.contains("myboxx"));   // 判断是否存在
+
+        // 两者都会修改文字，区别是innerHTML可以识别标签，innerText会把标签识别成一个字符串
+        root.innerHTML = "<a href=\"https://www.baidu.com\">Hello World !!</a>";
+        var root1 = document.getElementById("root1");
+        root1.innerText = "<a href=\"https://www.baidu.com\">Hello World !!</a>";
+    </script>
+</body>
+</html>
