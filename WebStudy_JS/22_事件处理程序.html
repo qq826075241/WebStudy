@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="clickHandle()">按钮</button>
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+
+    <script>
+
+        // 方式一 HTML事件
+        function clickHandle() {
+            console.log("点击了按钮！！！");
+        }
+
+        // 方式二 DOM0事件  缺点是会被覆盖
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function() {
+            console.log("点击了按钮1！！！");
+        }
+
+        // 方式三 DOM2事件
+        var btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click",function() {
+            console.log("点击了按钮2！！！");
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="box" id="cqq">Hello</div>
+    <div class="box1" id="cqq1">Hello</div>
+    <div class="box2" id="cqq2">Hello</div>
+
+    <script>
+        // 第一种方法，操作元素的setAttribute方法
+        var boxa = document.getElementById("cqq")
+        boxa.setAttribute("style","width:200px;height:200px;background:red;")
+
+        // 第二种方法，操作元素的style属性
+        var boxa1 = document.getElementById("cqq1")
+        boxa1.style.width = "300px";
+        boxa1.style.height = "300px";
+        boxa1.style.background = "blue";
+
+        // 第三种方法，操作元素style中的cssText属性
+        var boxa2 = document.getElementById("cqq2")
+        boxa2.style.cssText = "width:150px;height:150px;background:green;";
+    </script>
+</body>
+</html>

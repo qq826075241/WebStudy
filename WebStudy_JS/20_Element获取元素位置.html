@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 5px solid red;
+            padding: 10px;
+            margin: 20px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="root">Hello</div>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    <h3>标题</h3>
+    
+    <script>
+        var box = document.getElementById("root");
+        console.log(box.clientWidth);
+        console.log(box.clientHeight);
+        console.log(document.documentElement.clientHeight);   //获取视口高度
+        console.log(document.body.clientHeight);    //获取页面高度
+        console.log(box.scrollWidth);   //获取元素总宽度，包括溢出不可见的内容
+        console.log(document.documentElement.scrollLeft);   //获取左右滚动的距离
+        console.log(document.documentElement.scrollTop);   //获取上下滚动的距离
+        console.log(box.offsetWidth);   //获取元素的CSS水平宽度，包括元素本身高度、padding和boarder
+        console.log(box.offsetHeight);  //获取元素的CSS垂直高度，包括元素本身宽度、padding和boarder
+        console.log(box.offsetLeft);    //到定位父级左边界的间距
+        console.log(box.offsetTop);     //到定位父级上边界的间距
+    </script>
+</body>
+</html>
