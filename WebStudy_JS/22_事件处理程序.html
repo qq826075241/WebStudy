@@ -18,13 +18,13 @@
             console.log("点击了按钮！！！");
         }
 
-        // 方式二 DOM0事件  缺点是会被覆盖
+        // 方式二 DOM0事件  会被覆盖
         var btn1 = document.getElementById("btn1");
         btn1.onclick = function() {
             console.log("点击了按钮1！！！");
         }
 
-        // 方式三 DOM2事件
+        // 方式三 DOM2事件  不会被覆盖
         var btn2 = document.getElementById("btn2");
         btn2.addEventListener("click",function() {
             console.log("点击了按钮2！！！");
