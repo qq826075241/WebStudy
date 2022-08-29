@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .box3 {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            margin: auto;
+        }
+
+        .box4 {
+            width: 50px;
+            height: 50px;
+            background-color: goldenrod;
+            margin: auto;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <button id="btn1">鼠标单击</button>
+    <button id="btn2">鼠标双击</button>
+    <button id="btn3">鼠标按下</button>
+    <button id="btn4">鼠标抬起</button>
+    <div id="btn5" class="box1">
+        <div id="btn7" class="box3"></div>
+    </div>
+    <div id="btn6" class="box2">
+        <div id="btn8" class="box4"></div>
+    </div>
+
+    <script>
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var btn3 = document.getElementById("btn3");
+        var btn4 = document.getElementById("btn4");
+        var btn5 = document.getElementById("btn5");
+        var btn6 = document.getElementById("btn6");
+
+        btn1.onclick = function() {
+            console.log("鼠标单击");
+        }
+
+        btn2.ondblclick = function() {
+            console.log("鼠标双击");
+        }
+
+        btn3.onmousedown = function() {
+            console.log("鼠标按下");
+        }
+
+        btn4.onmouseup = function() {
+            console.log("鼠标抬起");
+        }
+
+        btn5.onmousemove = function() {
+            console.log("鼠标移动了");
+        }
+
+
+        // mouseenter/mouseleave 与 mouseover/mouseout 的区别在于进入子节点后 mouseover/mouseout会再次触发，mouseenter/mouseleave则不会
+
+        btn5.onmouseenter = function() {
+            console.log("鼠标进入了");
+        }
+
+        btn5.onmouseleave = function() {
+            console.log("鼠标离开了");
+        }
+
+        btn6.onmouseover = function() {
+            console.log("鼠标进入了");
+        }
+
+        btn6.onmouseout = function() {
+            console.log("鼠标离开了");
+        }
+
+        document.onwheel = function() {
+            console.log("鼠标滚轮");
+        }
+
+    </script>
+</body>
+</html>

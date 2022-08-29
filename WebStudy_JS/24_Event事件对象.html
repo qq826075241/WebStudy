@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <a href="https://www.baidu.com" id="cqq">跳转网页</a>
+
+    <div id="btnf" class="box1">
+        <div id="btnc" class="box2"></div>
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(event) {
+            event.target.innerHTML = "点击啦";   // taget返回当前点击的按钮
+            console.log(event.type);    // type返回当前时间类型
+        }
+
+        var btn1 = document.getElementById("cqq");
+        btn1.onclick = function(event) {
+            event.preventDefault();     // 阻止默认事件运行
+            console.log("点击了跳转按钮"); 
+        }
+
+        var btnf = document.getElementById("btnf");
+        var btnc = document.getElementById("btnc");
+        btnf.onclick = function(event) {
+            console.log("btnf");
+        }
+        btnc.onclick = function(event) {
+            event.stopPropagation();    // 阻止事件冒泡（防止父元素触发点击事件）
+            console.log("btnc");
+        }
+
+        
+    </script>
+</body>
+</html>

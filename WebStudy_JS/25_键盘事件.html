@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+
+    <script>
+
+        // ctrl alt shift 等按键也会触发方法
+
+        var input = document.getElementById("input1");
+        input.onkeydown = function(event) {     // 按下时触发
+            console.log(event.target.value);
+        }
+
+        var input1 = document.getElementById("input2");
+        input1.onkeyup = function(event) {      // 抬起时触发
+            console.log(event.target.value);
+        }
+    </script>
+</body>
+</html>
