@@ -9,11 +9,11 @@
 <body>
     <input type="text" id="input1">
     <input type="text" id="input2">
-
+    <input type="text" id="input3">
+    <input type="text" id="input4">
     <script>
 
         // ctrl alt shift esc 等按键也会触发方法
-
         var input = document.getElementById("input1");
         input.onkeydown = function(event) {     // 按下时触发
             console.log(event.target.value);
@@ -23,7 +23,17 @@
         input1.onkeyup = function(event) {      // 抬起时触发
             console.log(event.target.value);
         }
-        
+
+        var input2 = document.getElementById("input3");
+        input2.onkeypress = function(event) {   // 按下字母数字键时触发，ctrl alt shift esc 等统按钮不能触发
+            console.log(event.target.value);
+        }
+
+        var input3 = document.getElementById("input4");
+        input3.onkeyup = function(event) {   
+            console.log(event.keyCode);         // 输出按键唯一标识
+        }
+
     </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form" onsubmit="submitHandle">
+        <input type="text" name="username" id="username">
+        <button id="reset">重置</button>
+        <button>提交表单</button>
+    </form>
+
+    <script>
+        var username = document.getElementById("username");
+        var reset = document.getElementById("reset");
+        var form = document.getElementById("form");
+
+        username.oninput = function (e) {
+            console.log(e.target.value);    // 监听输入
+        }
+
+        username.onselect = function (e) {
+            console.log(e.target);    // 监听选中
+        }
+
+        username.onchange = function (e) {
+            console.log(e.target.value);    // 监听输入，失去焦点或回车时触发
+        }
+
+        reset.onclick = function () {
+            form.reset();       // 清空表单
+        }
+
+        function submitHandle() {
+            console.log("提交表单");
+        }
+    </script>
+</body>
+</html>
