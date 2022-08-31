@@ -5,12 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
+    <div id="box"></div>
+
     <script>
+        /// setTimeout定时器，用于延时执行任务
         setTimeout(() => {
             console.log("定时器");
         }, 3000);
+
+        var name = "cqq";
+        var user = {
+            name: "cqqwan",
+            getName: function() {
+                console.log(this.name);     // 这里的this指向user
+                setTimeout(function() {
+                    console.log(this.name); // 这里的this指向self
+                },1000)
+            }
+        }
+        user.getName();
+
+        /// setInterval定时器，用于定时执行任务
+        var i = 0;
+        var code = setInterval(() => {
+            i++;
+            console.log(i);
+            if(i > 5) {
+                clearInterval(code);
+            }
+        }, 1000);
+
+        var box = document.getElementById("box");
+        var opacity = 1;
+        var anim = setInterval(() => {
+            opacity -= 0.05;
+            box.style.opacity = opacity;
+            if(opacity <= 0) {
+                clearInterval(anim);
+            }
+        }, 80);
     </script>
 </body>
 </html>

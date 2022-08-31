@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+
+    <script>
+
+        function debounce(fn,delay) {
+            var timer = null;
+            return function() {
+                if(timer) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(fn,delay);
+            }
+        }
+
+        // 滚动事件 利用防抖降低方法触发频率
+        // document.onscroll = function () {
+        //     console.log(document.documentElement.scrollTop);
+        // }
+        window.onscroll =  debounce(scrollHandle, 200)
+        function scrollHandle() {
+            var scrollTop = document.documentElement.scrollTop;
+            console.log(scrollTop);
+        }
+    </script>
+</body>
+</html>

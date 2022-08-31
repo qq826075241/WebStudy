@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+    <h3>哈哈</h3>
+
+    <script>
+
+        function throttle(fn,delay) {
+            var valid = true;
+            return function () {
+                if(!valid) {
+                    return false;
+                }
+                valid = false;
+                fn();
+                setTimeout(function() {
+                    valid = true;
+                },delay)
+            }
+        }
+        window.onscroll =  throttle(scrollHandle, 200)
+        function scrollHandle() {
+            var scrollTop = document.documentElement.scrollTop;
+            console.log(scrollTop);
+        }
+    </script>
+</body>
+</html>
