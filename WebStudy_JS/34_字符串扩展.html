@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  unicode \u0061代表字母a
+        console.log("\u0061");
+
+        // for-of 快速遍历
+        var str = "hello";
+        for (const i of str) {
+            console.log(i);
+        }
+
+        //  动态创建一个a标签，a标签的href属性也是动态的
+        var href = "https://www.baidu.com";
+        var text = "百度";
+        // 正常写法
+        var a1 = "<a href='" + href + "'>" + text + "</a>";
+        console.log(a1);
+        // 字符串模板
+        var a2 = `<a href="${href}">${text}</a>`;
+        console.log(a2);
+    </script>
+</body>
+</html>

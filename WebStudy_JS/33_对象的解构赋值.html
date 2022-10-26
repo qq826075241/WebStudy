@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var user = {
+            name:"cqq",
+            age:18
+        }
+
+        // 正常输出方式
+        console.log(user.name);
+        console.log(user.age);
+
+        // 利用结构复制方式简化输出
+        let { name, age} = user;
+        console.log(name, age);
+
+        let {log} = console;
+        log(name, age);
+
+    </script>
+</body>
+</html>
