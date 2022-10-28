@@ -17,12 +17,17 @@
         console.log(user.name);
         console.log(user.age);
 
-        // 利用结构复制方式简化输出
+        // 利用解构赋值方式简化调用
         let { name, age} = user;
         console.log(name, age);
 
-        let {log} = console;
+        //  简化log方法输出日志
+        let {log} = console;       
         log(name, age);
+
+        //  简化Math方法调用
+        const { abs,ceil,floor,random } = Math;
+        log(random());
 
     </script>
 </body>
