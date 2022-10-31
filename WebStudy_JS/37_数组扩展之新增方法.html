@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>标题1</h3>
+    <h3>标题2</h3>
+    <h3>标题3</h3>
+
+    <script>
+        // 类数组（伪数组），只能使用数组的读取方式和length属性，不能使用数组方法（push）
+
+        // arguments
+        function add() {
+            console.log(arguments);   // 利用arguments读取参数
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+
+            var result = Array.from(arguments);   // 使用Array.from将arguments转换为数组
+            console.log(result);
+        }
+
+        add(10,20,30);
+
+        // 元素集合
+        let titles = document.querySelectorAll("h3");
+        console.log(titles);
+        console.log(Array.from(titles));    // 使用Array.from将titles转换为数组
+
+        // 类似数组的对象
+        var user = {
+            name : "cqq",
+            age : 18,
+            sex : "男",
+            length : 5
+        }
+        console.log(user);
+        console.log(Array.from(user));   // 使用Array.from将user转换为数组
+
+        // 将一组值转换为数组
+        console.log(Array.of(1, 2, 3));
+
+    </script>
+</body>
+</html>
