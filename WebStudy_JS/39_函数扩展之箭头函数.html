@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建函数的方法
+        // 第一种
+        function fn1() {
+
+        }
+
+        // 第二种：赋值方式声明函数
+        var fn2 = function(x,y){
+            return x + y;
+        }
+
+        // 箭头函数 
+        var fn3 = (x,y) => x + y
+
+        // 无参数
+        var fn4 = () => 10
+
+        // 多行语句
+        var fn5 = (x,y) => {
+            var z = 10;
+            return x+y+z;
+        }
+
+        // 如果返回的是一个对象，需要在对象外加上括号
+        var fn6 = () => ({x:2.22, y:3.33});
+
+        // 匿名函数的改写
+        var arr = [10, 20, 30]
+        // arr.map(function(element,index) {
+        //     console.log(element);
+        // })
+        // 改写为下列方式
+        arr.map((element,index) => {
+            console.log(element);
+        })
+
+        var name = "cqq";
+        var user = {
+            name : "zy",     
+            age : 18,
+            getName() {
+                console.log(this.name);  // 此时this指向user,而非self,所以打印的是user.name
+            },
+            getSelfName() {
+                setTimeout(function() {
+                    console.log(this.name);     // 此时this指向self,所以打印的是self.name
+                })
+            },
+            getArrowName() {
+                setTimeout(() => {
+                    console.log(this.name);     // 箭头函数没有自己的self，所以此时this指向的是外层user,于是打印的是user.name
+                });
+            }
+        }
+        user.getName();
+        user.getSelfName();
+        user.getArrowName();
+    </script>
+</body>
+</html>
