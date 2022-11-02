@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box"></div>
+
+    <script>
+        function loadImageAsyc(url) {
+            const promise = new Promise(function (resolve, reject) {
+                const image = new Image();
+                image.src = url;
+                image.onload = function() {
+                    resolve(image)
+                }
+                image.onerror = function() {
+                    reject(new Error("无法加载图片"));
+                }
+            })
+            return promise;
+        }
+
+        var box = document.getElementById("box")
+        var promise = loadImageAsyc("https://img2.woyaogexing.com/2022/11/02/85ccef7d8ab0f638!400x400.jpg");
+        promise.then(function (data) {
+            // 成功
+            box.appendChild(data)
+        },function(error) {
+            // 失败
+            console.log(error);
+        }) 
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var s = new Set();
+        console.log(s);
+        s.add(100);     // 增
+        s.add(200);     
+        console.log(s);
+        s.delete(100);  // 删
+        console.log(s);
+        var flag = s.has(200)   // 判断
+        console.log(flag);
+        s.clear(s)
+        console.log(s);
+    </script>
+</body>
+</html>

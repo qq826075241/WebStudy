@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var s = new Set();
+        var arr = [10, 20, 30, 40, 50];
+        arr.forEach(x => s.add(x));
+        console.log(s);
+
+        var s1 = new Set([10, 20, 30, 40, 50]);
+        console.log(s1);
+
+        // Set的去重
+        var arr1 = [10, 10, 20, 30, 30, 40, 50];
+        var s2 = new Set(arr1);
+        console.log(s2);
+        console.log([...s2]);    // Set可使用扩展运算符转换为数组
+        console.log([...s2].join());    // 可再进一步转换为字符串
+
+
+    </script>
+</body>
+</html>
