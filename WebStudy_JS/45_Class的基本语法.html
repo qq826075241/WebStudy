@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES5中类的表现形式
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.getName = function(){
+            console.log(this.name);
+        }
+
+        var p = new Person("cqq",18);
+        p.getName();
+
+        // ES6中的类
+        class cPerson {
+            constructor(name, age) {
+                // this.name = name;
+                // this.age = age;
+            }
+
+            getName() {
+                console.log(this.name);
+            }
+        }
+        var c = new cPerson("zy",18);
+        c.getName();
+
+    </script>
+</body>
+</html>

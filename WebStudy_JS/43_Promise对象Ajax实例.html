@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // XGR对象
+        const getJSON = function(url) {
+            const promise = new Promise(function(resolve,reject) {
+
+
+                const handler = function() {
+                    if(this.readyState !== 4) {
+                        return;
+                    }
+                    if(this.status == 200) {
+                        resolve(this.resolve)
+                    } else {
+                        reject(new Error(this.statusText))
+                    }
+                }
+                // 网络请求
+                const client = new XMLHttpRequest();
+                client.open("GET",url);
+                client.onreadystatechange = handler;
+                client.responseType = "json";
+                client.setRequestHeader("Acept","application/json");
+                client.send("https://hfapp.baiyaodajiankang.com/rxzly/version/app/newVersion")
+                .then(function(data){
+                    console.log(data);
+                },function(error){
+                    console.log(error);
+                })
+            })
+            return promise;
+        }
+    </script>
+</body>
+</html>
