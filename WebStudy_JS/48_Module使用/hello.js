@@ -1,0 +1,1 @@
+export var Hello = "你好啊";

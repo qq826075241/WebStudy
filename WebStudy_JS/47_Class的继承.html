@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+
+            getName(){
+                console.log(this.name);
+            }
+
+            static getInfo() {
+                console.log("这是一个人");
+            }
+        }
+
+        class Student extends Person {
+            constructor(name,age,job){
+                super(name,age);
+                this.job = job;
+            }
+            
+            getName(){
+                console.log("他是"+this.name);
+            }
+        }
+        
+        var s = new Student("小明",15,"厨师");
+        s.getName();
+        Student.getInfo();
+    </script>
+</body>
+</html>
