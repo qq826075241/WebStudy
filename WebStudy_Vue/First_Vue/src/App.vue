@@ -1,5 +1,10 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import Tjxr from './components/条件渲染.vue'
+import Lbxr from './components/列表渲染.vue'
+import Sjcl from './components/事件处理.vue'
+import Bdsrbd from './components/表单输入绑定.vue'
+import Zjjc from './components/组件基础.vue'
 </script>
 
 <template>
@@ -9,7 +14,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <body>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <Zjjc msg="You did it!" />
     </div>
   </body>
 
