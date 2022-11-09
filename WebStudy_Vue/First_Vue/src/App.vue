@@ -1,10 +1,21 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import Tjxr from './components/条件渲染.vue'
-import Lbxr from './components/列表渲染.vue'
-import Sjcl from './components/事件处理.vue'
-import Bdsrbd from './components/表单输入绑定.vue'
-import Zjjc from './components/组件基础.vue'
+import HelloWorld from './components/01_模板语法.vue'
+import Tjxr from './components/02_条件渲染.vue'
+import Lbxr from './components/03_列表渲染.vue'
+import Sjcl from './components/04_事件处理.vue'
+import Bdsrbd from './components/05_表单输入绑定.vue'
+import Zjjc from './components/06_组件基础.vue'
+import Zjjh from './components/07_Props组件交互.vue'
+import Zdyjh from './components/08_自定义事件组件交互.vue'
+
+const title = "我是一个标题";
+const age = 20;
+const names = ["cqq","zy","asd"];
+
+function getDataHandle(data) {
+  console.log(data);
+}
+
 </script>
 
 <template>
@@ -12,11 +23,12 @@ import Zjjc from './components/组件基础.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
   </header>
 
-  <body>
+  <!-- <body>
     <div class="wrapper">
-      <Zjjc msg="You did it!" />
+      <HelloWorld msg="You did it!" />
     </div>
-  </body>
+  </body> -->
+  <Zdyjh @onEvent="getDataHandle"/>
 
 </template>
 
