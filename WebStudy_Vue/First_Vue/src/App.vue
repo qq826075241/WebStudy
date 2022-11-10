@@ -7,6 +7,7 @@ import Bdsrbd from './components/05_表单输入绑定.vue'
 import Zjjc from './components/06_组件基础.vue'
 import Zjjh from './components/07_Props组件交互.vue'
 import Zdyjh from './components/08_自定义事件组件交互.vue'
+import Smzq from './components/09_组件生命周期.vue'
 
 const title = "我是一个标题";
 const age = 20;
@@ -28,7 +29,7 @@ function getDataHandle(data) {
       <HelloWorld msg="You did it!" />
     </div>
   </body> -->
-  <Zdyjh @onEvent="getDataHandle"/>
+  <Smzq />
 
 </template>
 
