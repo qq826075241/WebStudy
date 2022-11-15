@@ -9,6 +9,7 @@ import Zjjh from './components/07_Props组件交互.vue'
 import Zdyjh from './components/08_自定义事件组件交互.vue'
 import Smzq from './components/09_组件生命周期.vue'
 import Yrdsf from './components/10_Vue引入第三方.vue'
+import Axwlqq from './components/11_Axios网络请求.vue'
 
 const title = "我是一个标题";
 const age = 20;
@@ -30,7 +31,7 @@ function getDataHandle(data) {
       <HelloWorld msg="You did it!" />
     </div>
   </body> -->
-  <Smzq />
+  <Axwlqq />
 
 </template>
 
