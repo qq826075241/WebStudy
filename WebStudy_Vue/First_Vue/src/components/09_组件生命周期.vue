@@ -6,7 +6,6 @@
 卸载时： beforeUnmount、unmounted 
 -->
 
-
 <template>
     <h3>组件生命周期函数</h3>
     <p>{{ message }}</p>
