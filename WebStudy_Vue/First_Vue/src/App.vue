@@ -13,6 +13,7 @@ import Axwlqq from './components/11_Axios网络请求.vue'
 import Axwlqqfz from './components/12_Axios网络请求封装.vue'
 import Kyjjfa from './components/13_网络请求跨域解决方案.vue'
 import Sylypz from './components/14_Vue使用路由配置.vue'
+import Ztgl from './components/15_Vue状态管理.vue'
 
 const title = "我是一个标题";
 const age = 20;
@@ -25,18 +26,10 @@ function getDataHandle(data) {
 </script>
 
 <template>
-  <!-- <header>
+  <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-  </header> -->
-
-  <!-- <body>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </body> -->
-  <!-- <Sylypz /> -->
-
-  <router-view></router-view>
+  </header>
+  <Ztgl />
 
 </template>
 
