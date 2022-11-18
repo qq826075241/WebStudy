@@ -1,5 +1,5 @@
 {
-  "name": "vue-statemanager",
+  "name": "vue-nestingofroutes",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "vue": "^3.2.38",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",
