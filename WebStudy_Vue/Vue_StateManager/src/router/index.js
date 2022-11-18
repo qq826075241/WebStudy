@@ -17,8 +17,7 @@ const router = createRouter({
     /**
      * createWebhHistory 方式需要后台配合重定向，否则会出现404问题
      * 
-     * 
-     * 
+     * createWebHashHistory 无需后台配合 原理：a标签锚点链接
      */
     history: createWebHashHistory(),
     routes

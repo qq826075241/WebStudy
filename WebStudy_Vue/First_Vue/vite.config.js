@@ -10,13 +10,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  },
-  server: {
-    proxy: {
-      '/api':{
-        target: 'http://iwenwiki.com',
-        changeOrigin: true
-      }
-    }
   }
+  // 跨域处理时使用
+  // server: {
+  //   proxy: {
+  //     '/api':{
+  //       target: 'http://iwenwiki.com',
+  //       changeOrigin: true
+  //     }
+  //   }
+  // }
 })
