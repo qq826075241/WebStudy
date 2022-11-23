@@ -1,10 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-
-import { useCounterStore } from "./stores/counter"
-const counter = useCounterStore();
-
 </script>
 
 <template>
@@ -17,12 +13,7 @@ const counter = useCounterStore();
   </header>
 
   <main>
-    <!-- <TheWelcome /> -->
-  数值：{{ counter.count }}
-  <br/>
-  数值的两倍：{{ counter.doubleCount }}
-  <br/>
-  <button @click="counter.increment" type="button">点击+1</button>
+    <TheWelcome />
   </main>
 </template>
 
