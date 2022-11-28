@@ -5,16 +5,22 @@
       <div class="login-title">用户登录</div>
       <el-form :model="form">
         <el-form-item label="">
-          <el-input v-model="form.account" placeholder="请输入用户名"/>
+          <el-input v-model="form.account" placeholder="请输入用户名">
+            <template #prefix>
+              <span class="iconfont icon-zhanghao"></span>
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item label="">
-          <el-input v-model="form.password" placeholder="请输入密码"/>
+          <el-input v-model="form.password" placeholder="请输入密码">
+            <template #prefix>
+              <span class="iconfont icon-31mima"></span>
+            </template></el-input>
         </el-form-item>
         <el-form-item label="">
           <div class="check-code-panel">
             <el-input v-model="form.checkCode" placeholder="请输入验证码" class="input-panel"/>
-            <!-- <img :src="checkCodeUrl" class="check-code"> -->
-            <img src="../assets/checkCode.jpeg" alt="" class="check-code"/>
+            <img v-bind:src="checkCodeUrl" class="check-code" @click="changeCheckCode"/>
           </div>
         </el-form-item>
         <el-checkbox-group v-model="form.type">
@@ -32,8 +38,13 @@
 <script setup>
   import { reactive, ref } from 'vue'
 
-  const form = reactive({})
-  const checkCodeUrl = "api/checkCode";
+  const form = reactive({});
+  const checkCodeUrl = ref("/src/assets/checkCode1.jpeg");
+
+  const changeCheckCode = () => {
+    checkCodeUrl.value = "/src/assets/checkCode" + Math.ceil(Math.random()*3) + ".jpeg";
+    console.log(checkCodeUrl);
+  }
 
 </script>
 
