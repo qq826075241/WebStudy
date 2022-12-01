@@ -3,27 +3,27 @@
   <div class="login-body">
     <div class="login-panel">
       <div class="login-title">用户登录</div>
-      <el-form :model="form">
-        <el-form-item label="">
-          <el-input v-model="form.account" placeholder="请输入用户名">
+      <el-form :model="formData" :rules="rules" ref="formDataRef">
+        <el-form-item prop="account">
+          <el-input v-model="formData.account" placeholder="请输入用户名">
             <template #prefix>
               <span class="iconfont icon-zhanghao"></span>
             </template>
           </el-input>
         </el-form-item>
-        <el-form-item label="">
-          <el-input v-model="form.password" placeholder="请输入密码">
+        <el-form-item prop="password">
+          <el-input v-model="formData.password" placeholder="请输入密码">
             <template #prefix>
               <span class="iconfont icon-31mima"></span>
             </template></el-input>
         </el-form-item>
-        <el-form-item label="">
+        <el-form-item prop="checkCode">
           <div class="check-code-panel">
-            <el-input v-model="form.checkCode" placeholder="请输入验证码" class="input-panel"/>
-            <img v-bind:src="checkCodeUrl" class="check-code" @click="changeCheckCode"/>
+            <el-input v-model="formData.checkCode" placeholder="请输入验证码" class="input-panel"/>
+            <img :src="checkCodeUrl" class="check-code" @click="changeCheckCode"/>
           </div>
         </el-form-item>
-        <el-checkbox-group v-model="form.type">
+        <el-checkbox-group v-model="formData.type">
           <el-checkbox label="记住我" name="type" />
         </el-checkbox-group>
         <el-form-item label="">
@@ -38,12 +38,41 @@
 <script setup>
   import { reactive, ref } from 'vue'
 
-  const form = reactive({});
-  const checkCodeUrl = ref("/src/assets/checkCode1.jpeg");
+  const api = {
+    checkCode: "api/checkCode"
+  }
 
+  // 表单相关
+  const formDataRef = ref(null);
+  const formData = reactive({});
+  
+  // 配置验证码图片
+  const checkCodeUrl = ref(api.checkCode);
   const changeCheckCode = () => {
-    checkCodeUrl.value = "/src/assets/checkCode" + Math.ceil(Math.random()*3) + ".jpeg";
-    console.log(checkCodeUrl);
+    checkCodeUrl.value = api.checkCode + "?" + new Date().getTime();
+  }
+
+  const rules = {
+    account:[{
+      required: true,
+      message: "请输入用户名",
+    }],
+    password: [{
+      required: true,
+      message: "请输入密码",
+    }],
+    checkCode: [{
+      required: true,
+      message: "请输入验证码",
+    }]
+  }
+
+  const login = () => {
+    formDataRef.value.validate((valid) => {
+      if(!valid){
+        return;
+      }
+    })
   }
 
 </script>
@@ -78,17 +107,16 @@
       .check-code-panel {
           display: flex;
           align-items: center;
-          width: 100;
+          width: 100%;
           
           .input-panel {
             flex: 1;
-            margin-right: 25px;
+            margin-right: 5px;
           }
           
           .check-code {
-            object-fit: cover;
-            height: 25px;
-
+            cursor: pointer;
+            height: 34px;
           }
         }
     }
