@@ -23,11 +23,11 @@
             <img :src="checkCodeUrl" class="check-code" @click="changeCheckCode"/>
           </div>
         </el-form-item>
-        <el-checkbox-group v-model="formData.type">
+        <el-checkbox-group v-model="formData.rememberMe">
           <el-checkbox label="记住我" name="type" />
         </el-checkbox-group>
         <el-form-item label="">
-          <el-button type="primary" :style="{width:'100%'}">登录</el-button>
+          <el-button type="primary" :style="{width:'100%'}" @click="login" >登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -36,10 +36,13 @@
 </template>
 
 <script setup>
-  import { reactive, ref } from 'vue'
+  import { getCurrentInstance, reactive, ref } from 'vue';
+
+  const { proxy } = getCurrentInstance();
 
   const api = {
-    checkCode: "api/checkCode"
+    checkCode: "api/checkCode",
+    login: "/login"
   }
 
   // 表单相关
@@ -52,6 +55,7 @@
     checkCodeUrl.value = api.checkCode + "?" + new Date().getTime();
   }
 
+  // 输入验证规则
   const rules = {
     account:[{
       required: true,
@@ -68,11 +72,19 @@
   }
 
   const login = () => {
-    formDataRef.value.validate((valid) => {
+    formDataRef.value.validate(async (valid) => {
       if(!valid){
         return;
       }
-    })
+      let result = await proxy.Request({
+        url: api.login,
+        params:{
+          account: formData.account,
+          password: formData.password,
+          checkCode: formData.checkCode
+        }
+      })
+    });
   }
 
 </script>
