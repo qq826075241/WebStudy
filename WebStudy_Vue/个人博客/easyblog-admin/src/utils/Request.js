@@ -1,5 +1,8 @@
 import axios from 'axios'
+
 import { ElLoading, ElMessage } from 'element-plus';
+
+import message from './Message';
 
 const contentTypeForm = "application/x-www-form-urlencoded;charset=UTF-8";
 const contentTypeJson = "application/json";
@@ -53,10 +56,7 @@ const request = (config) => {
             if(showLoading && loading) {
                 loading.close();
             }
-            ElMessage({
-                message: '出错啦！！！',
-                type: 'error',
-            })
+            message.error('发送请求失败');
             return Promise.reject('发送请求失败');
         }
     )
@@ -68,6 +68,11 @@ const request = (config) => {
                 loading.close();
             }
             const responseData = response.data
+            if(responseData.status == "error") {
+                return Promise.reject(responseData.info);
+            } else {
+                return responseData
+            }
         },
         (error) => {
             if(showLoading && loading) {
@@ -79,25 +84,20 @@ const request = (config) => {
     )
 
     // 写法一
-    // return instantce.post(url.params).catch(error => {
-    //     ElMessage({
-    //         message: error,
-    //         type: 'error',
-    //     })
-    //     return null;
-    // })
-    
-    let result = new Promise((resolve, reject) => {
-        instantce.post(url, params).then(res => {
-            resolve(res);
-        }).catch(error => {
-            ElMessage({
-                message: error,
-                type: 'error',
-            })
-        })
+    return instantce.post(url, params).catch(error => {
+        message.error(error);
+        return error;
     })
-    return result;
+    
+    // 写法二
+    // let result = new Promise((resolve, reject) => {
+    //     instantce.post(url, params).then(res => {
+    //         resolve(res);
+    //     }).catch(error => {
+    //         message.error(error)；
+    //     })
+    // })
+    // return result;
 }
 
 export default request;

@@ -12,7 +12,7 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="formData.password" placeholder="请输入密码">
+          <el-input v-model="formData.password" type="password" placeholder="请输入密码">
             <template #prefix>
               <span class="iconfont icon-31mima"></span>
             </template></el-input>
@@ -37,6 +37,7 @@
 
 <script setup>
   import { getCurrentInstance, reactive, ref } from 'vue';
+  import md5 from "js-md5";
 
   const { proxy } = getCurrentInstance();
 
@@ -80,10 +81,12 @@
         url: api.login,
         params:{
           account: formData.account,
-          password: formData.password,
+          password: md5(formData.password),
           checkCode: formData.checkCode
         }
       })
+
+      console.log(result)
     });
   }
 
