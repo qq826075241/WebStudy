@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { ElLoading, ElMessage } from 'element-plus';
-
+import router from '../router'
 import message from './Message';
 
 const contentTypeForm = "application/x-www-form-urlencoded;charset=UTF-8";
@@ -69,8 +69,19 @@ const request = (config) => {
             }
             const responseData = response.data
             if(responseData.status == "error") {
+                if(config.errorCallBack) {
+                    config.errorCallBack();
+                }
                 return Promise.reject(responseData.info);
             } else {
+                if(responseData.code == 200) {
+                    return response;
+                } else if(responseData.code == 901) {
+                    setTimeout(() => {
+                        router.push("/login");    // 登录超时自动跳转到登录页
+                    }, 2000)
+                    return Promise.reject("登录超时");
+                }
                 return responseData
             }
         },

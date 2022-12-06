@@ -38,6 +38,7 @@
 <script setup>
   import { getCurrentInstance, reactive, ref } from 'vue';
   import md5 from "js-md5";
+  import vueCookies from 'vue-cookies';
 
   const { proxy } = getCurrentInstance();
 
@@ -72,19 +73,56 @@
     }]
   }
 
+  const init = () => {
+    const loginInfo = vueCookies.get("loginInfo");
+    if(!loginInfo) {
+      return;
+    }
+    Object.assign(formData, loginInfo);
+  }
+
   const login = () => {
     formDataRef.value.validate(async (valid) => {
       if(!valid){
         return;
       }
+      
+      let cookieLoginInfo = vueCookies.get("loginInfo");
+      let cookiePassword = cookieLoginInfo == null ? null : cookieLoginInfo.password;
+
+      if(formData.password !== cookiePassword) {
+        formData.password = md5(formData.password)
+      }
+
+      let params = {
+        account: formData.account,
+        password: md5(formData.password),
+        checkCode: formData.checkCode
+      }
+
       let result = await proxy.Request({
         url: api.login,
-        params:{
-          account: formData.account,
-          password: md5(formData.password),
-          checkCode: formData.checkCode
+        params: params,
+        errorCallBack: () => {
+          changeCheckCode();  // 验证码输入错误时刷新验证码
         }
       })
+      if(!result) {
+        return;
+      }
+
+      proxy.message.success("登录成功");
+
+      const loginInfo = {
+        account: params.account,
+        password: params.password,
+        rememberMe: params.rememberMe,
+      }
+      
+      vueCookies.set("userInfo", result.data, 0);
+      if(formData.rememberMe) {
+        vueCookies.set("loginInfo", loginInfo , "7d");    // 登录成功保存cookie
+      }
 
       console.log(result)
     });
