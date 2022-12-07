@@ -23,10 +23,12 @@
             <img :src="checkCodeUrl" class="check-code" @click="changeCheckCode"/>
           </div>
         </el-form-item>
-        <el-checkbox-group v-model="formData.rememberMe">
-          <el-checkbox label="记住我" name="type" />
-        </el-checkbox-group>
-        <el-form-item label="">
+        <el-form-item>
+          <el-checkbox v-model="formData.rememberMe"
+                       :value="rememberMe"
+                       :true-label="1">记住我</el-checkbox>
+        </el-form-item>
+        <el-form-item>
           <el-button type="primary" :style="{width:'100%'}" @click="login" >登录</el-button>
         </el-form-item>
       </el-form>
@@ -80,13 +82,13 @@
     }
     Object.assign(formData, loginInfo);
   }
+  init();
 
   const login = () => {
     formDataRef.value.validate(async (valid) => {
       if(!valid){
         return;
       }
-      
       let cookieLoginInfo = vueCookies.get("loginInfo");
       let cookiePassword = cookieLoginInfo == null ? null : cookieLoginInfo.password;
 
@@ -96,7 +98,7 @@
 
       let params = {
         account: formData.account,
-        password: md5(formData.password),
+        password: formData.password,
         checkCode: formData.checkCode
       }
 
@@ -107,6 +109,8 @@
           changeCheckCode();  // 验证码输入错误时刷新验证码
         }
       })
+
+      console.log("情况是" + result + "!!!");
       if(!result) {
         return;
       }
@@ -116,13 +120,15 @@
       const loginInfo = {
         account: params.account,
         password: params.password,
-        rememberMe: params.rememberMe,
+        rememberMe: formData.rememberMe
       }
       
+      console.log(formData.rememberMe);
+
       vueCookies.set("userInfo", result.data, 0);
-      if(formData.rememberMe) {
+      if(formData.rememberMe == 1) {
         vueCookies.set("loginInfo", loginInfo , "7d");    // 登录成功保存cookie
-      }
+      } else
 
       console.log(result)
     });
