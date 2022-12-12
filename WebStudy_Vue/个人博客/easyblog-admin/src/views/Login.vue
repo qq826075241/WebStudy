@@ -26,7 +26,7 @@
         <el-form-item>
           <el-checkbox v-model="formData.rememberMe"
                        :value="rememberMe"
-                       :true-label="1">记住我</el-checkbox>
+                       :true-label="1" :false-label="2">记住我</el-checkbox>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" :style="{width:'100%'}" @click="login" >登录</el-button>

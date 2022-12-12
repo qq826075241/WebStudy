@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-import { ElLoading, ElMessage } from 'element-plus';
+import { ElLoading } from 'element-plus';
 import router from '../router'
 import message from './Message';
 
 const contentTypeForm = "application/x-www-form-urlencoded;charset=UTF-8";
 const contentTypeJson = "application/json";
-const contentTypeFile = "multipart/from-data";
+const contentTypeFile = "multipart/form-data";
 
 const request = (config) => {
     // let url = config.url;
@@ -14,18 +14,14 @@ const request = (config) => {
     // let dataType = config.dataType;
     // let showLoading = config.showLoading;
     // 以上语句可简写为下方语句
-    let { url, params, dataType, showLoading } = config;
-
-    dataType = dataType ? "form" : dataType;
-    showLoading = showLoading ? true : showLoading;
-    
+    let { url, params, dataType = 'form', showLoading = 'true' } = config;
     let contentType = contentTypeForm;
-    if(dataType === "json") {
+    if (dataType === "json") {
         contentType = contentTypeJson;
-    } else if(dataType === "file") {
+    } else if (dataType === "file") {
         contentType = contentTypeFile;
         let param = new FormData();
-        for(let key in params) {
+        for (let key in params) {
             param.append(key, params[key]);
         }
         params = param;
@@ -75,17 +71,17 @@ const request = (config) => {
                 return Promise.reject(responseData.info);
             } else {
                 if(responseData.code == 200) {
-                    return response;
+                    return responseData;
                 } else if(responseData.code == 901) {
                     setTimeout(() => {
                         router.push("/login");    // 登录超时自动跳转到登录页
                     }, 2000)
                     return Promise.reject("登录超时");
                 }
-                return responseData
             }
         },
         (error) => {
+            console.log(error);
             if(showLoading && loading) {
                 loading.close();
             }
@@ -96,8 +92,8 @@ const request = (config) => {
 
     // 写法一
     return instantce.post(url, params).catch(error => {
-        message.error(error);
-        return error;
+        message.error(error)
+        return null;
     })
     
     // 写法二

@@ -2,7 +2,7 @@
 
 default {
   computed: {
-    ...mapState(["counter"])
+    mapState(["counter"])
   }
 }
 

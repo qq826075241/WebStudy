@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            margin: 0 auto;
+            width: 500px;
+            height: 500px;
+            background-color:rgb(6, 192, 248);
+            /* position: absolute;
+            left: 200px; */
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+           
+           background-color: red;
+           animation-name: move;
+           animation-duration: 3s;
+           animation-iteration-count: infinite;
+           animation-direction: alternate;
+           position: absolute;
+           top:200px;
+           }
+            @keyframes move
+            {
+             /* 初始状态 */
+           0%{
+            transform: translate(0px,0px);
+            border-radius: 100%;
+           }
+           50%{
+           transform: translate(200px,0x);
+           border-radius: 0%;
+           }
+           /* 终止状态 */
+           100%{
+           transform: translate(400px,0px);
+           background-color: rgb(216, 151, 12) ;
+           border-radius: 100%;
+           }
+           }
+    </style>
+</head>
+
+<body>
+<div id="box1">
+   <div id="box"></div>
+</div>
+
+</body>
+
+</html>
