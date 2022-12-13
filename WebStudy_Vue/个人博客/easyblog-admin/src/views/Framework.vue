@@ -1,15 +1,15 @@
 
 <template>
-    <div class="common-layout">
-      <el-container>
-        <el-header>Header</el-header>
-        <el-container>
-          <el-aside width="200px">Aside</el-aside>
-          <el-main>Main</el-main>
-        </el-container>
+  <div class="layout">
+    <el-container>
+      <el-header class="header">Header</el-header>
+      <el-container class="container">
+        <el-aside width="200px" class="left-aside">Aside</el-aside>
+        <el-main class="right-main">Main</el-main>
       </el-container>
-    </div>
-  </template>
+    </el-container>
+  </div>
+</template>
   
  
 <script setup>
@@ -17,5 +17,13 @@
 </script>
 
 <style lang="scss">
-
+.layout {
+  .header {
+    border-bottom: 1px solid #ddd;
+  }
+  .container {
+    background: #f5f6f7;
+    height: calc(1);
+  }
+}
 </style>
