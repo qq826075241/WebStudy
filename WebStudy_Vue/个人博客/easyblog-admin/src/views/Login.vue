@@ -39,10 +39,13 @@
 
 <script setup>
   import { getCurrentInstance, reactive, ref } from 'vue';
-  import md5 from "js-md5";
+  import md5 from 'js-md5';
   import vueCookies from 'vue-cookies';
+  import { useRouter } from 'vue-router'
 
   const { proxy } = getCurrentInstance();
+
+  const router = useRouter();
 
   const api = {
     checkCode: "api/checkCode",
@@ -81,6 +84,13 @@
       return;
     }
     Object.assign(formData, loginInfo);
+
+    document.onkeydown = (e) => {
+      if(e.keyCode != 13) {
+        return;
+      }
+      login();
+    }
   }
   init();
 
@@ -110,20 +120,22 @@
         }
       })
 
-      console.log("情况是" + result + "!!!");
       if(!result) {
         return;
       }
 
       proxy.message.success("登录成功");
 
+      // 登录成功跳转
+      setTimeout(() => {
+        router.push("/framework")
+      }, 1500);
+
       const loginInfo = {
         account: params.account,
         password: params.password,
         rememberMe: formData.rememberMe
       }
-      
-      console.log(formData.rememberMe);
 
       vueCookies.set("userInfo", result.data, 0);
       if(formData.rememberMe == 1) {
