@@ -1,6 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1669621293730') format('truetype');
+  font-family: "iconfont"; /* Project id 3826138 */
+  src: url('iconfont.woff2?t=1671006844137') format('woff2'),
+       url('iconfont.woff?t=1671006844137') format('woff'),
+       url('iconfont.ttf?t=1671006844137') format('truetype');
 }
 
 .iconfont {
@@ -11,11 +13,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-31mima:before {
-  content: "\f0216";
+.icon-down:before {
+  content: "\e6b9";
 }
 
-.icon-zhanghao:before {
+.icon-up:before {
+  content: "\e78f";
+}
+
+.icon-delete:before {
+  content: "\e6b4";
+}
+
+.icon-zhuanti:before {
+  content: "\e657";
+}
+
+.icon-setting:before {
+  content: "\e78e";
+}
+
+.icon-password:before {
+  content: "\e600";
+}
+
+.icon-account:before {
   content: "\e65e";
+}
+
+.icon-blog:before {
+  content: "\e601";
 }
 

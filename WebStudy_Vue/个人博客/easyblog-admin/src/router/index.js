@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import vueCookies from 'vue-cookies';
 
 const routes = [
   {
@@ -20,7 +21,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const userInfo = VueCookies.get("userInfo");
+  const userInfo = vueCookies.get("userInfo");
   debugger;
   if(!userInfo && to.path != "/login") {
     router.push("/login");
