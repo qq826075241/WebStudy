@@ -2,7 +2,30 @@
 <template>
   <div class="layout">
     <el-container>
-      <el-header class="header">Header</el-header>
+      <el-header class="header">
+        <div class="logo">Easyblog</div>
+        <div class="user-info">
+          <span>欢 迎 回 来，</span>
+          <el-dropdown trigger="hover">
+            <span class="nick-name">
+              {{userInfo.nickName}}
+              <span class="iconfont icon-down"></span>
+              <el-icon class="el-icon--right">
+                <arrow-down />
+              </el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>个人信息</el-dropdown-item>
+                <el-dropdown-item>退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+          <div class="avatar">
+            <img :src="userInfo.avatar" alt="">
+          </div>
+        </div>
+      </el-header>
       <el-container class="container">
         <el-aside width="200px" class="left-aside">
           <div>
@@ -10,13 +33,13 @@
           </div>
           <div class="menu-panel">
             <ul>
-              <li v-for="menu in menuList">
-                <span class="menu-title-p">
+              <li v-for="(menu, index) in menuList">
+                <span class="menu-title-p" @click="openClose(index)">
                   <span :class="['iconfont', menu.icon]"></span>
                   <span class="menu-title">{{menu.title}}</span>
                   <span :class="['iconfont', 'open-close', menu.open?'icon-up':'icon-down']"></span>
                 </span>
-                <ul class="sub-menu">
+                <ul class="sub-menu" v-show="menu.open">
                   <li v-for="subMenu in menu.children">
                     <span class="sub-menu-item">{{subMenu.title}}</span>
                   </li>
@@ -33,7 +56,10 @@
   
  
 <script setup>
-import {ref} from "vue"
+import {getCurrentInstance, ref} from "vue"
+import vueCookies from 'vue-cookies';
+
+const { proxy } = getCurrentInstance();
 
 const menuList = ref([
   {
@@ -95,12 +121,53 @@ const menuList = ref([
   }
 ]);
 
+const openClose = (index) => {
+  const open = menuList.value[index].open;
+  menuList.value[index].open = !open;
+}
+
+const userInfo = ref({});
+const init = () => {
+  userInfo.value = vueCookies.get("userInfo");
+  userInfo.value.avatar = proxy.globalInfo.imageUrl + userInfo.value.avatar;
+  console.log("用户名是：" + userInfo.value.nickName + ",头像是：" + userInfo.value.avatar);
+}
+init();
+
+
 </script> 
 
 <style lang="scss">
 .layout {
   .header {
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      flex: 1;
+      font-size: 30px;
+    }
+    .user-info {
+      display: flex;
+      .nick-name {
+        line-height: 24px;
+        text-align: center;
+        color: rgb(6, 143, 234);
+        .icon-close {
+          font-size: 14px;
+        }
+      }
+      
+      .avatar {
+        width: 50px;
+        border-radius: 25px;
+        img {
+          width: 100%;
+  
+        }
+      }
+    }
   }
   .container {
     padding: 10px;
@@ -119,6 +186,7 @@ const menuList = ref([
       }
 
       .menu-panel {
+        margin-top: 5px;
         ul,li {
           padding: 0px;
           margin: 0px;
@@ -126,6 +194,7 @@ const menuList = ref([
         }
 
         .menu-title-p {
+          padding: 0px, 5px;
           line-height: 40px;
           cursor: pointer;
           display: flex;
@@ -139,14 +208,21 @@ const menuList = ref([
           }
           .open-close {
             width: 20px;
+            font-size: 16px;
           }
+        }
+
+        .menu-title-p:hover {
+          background: #ddd;
         }
 
         .sub-menu {
           padding-left: 25px;
           font-size: 14px;
 
-          .sub-menu-item {
+          .sub-menu-item {  
+            display: block;
+            cursor: pointer;
             line-height: 30px;
           }
         }
