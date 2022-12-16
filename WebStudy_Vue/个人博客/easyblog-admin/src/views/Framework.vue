@@ -41,14 +41,16 @@
                 </span>
                 <ul class="sub-menu" v-show="menu.open">
                   <li v-for="subMenu in menu.children">
-                    <span class="sub-menu-item">{{subMenu.title}}</span>
+                    <router-link :to="subMenu.path" :class="['sub-menu-item', activePath==subMenu.path?'active':'']">{{subMenu.title}}</router-link>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
         </el-aside>
-        <el-main class="right-main">Main</el-main>
+        <el-main class="right-main">
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -56,10 +58,13 @@
   
  
 <script setup>
-import {getCurrentInstance, ref} from "vue"
+import { getCurrentInstance, ref, watch } from "vue"
 import vueCookies from 'vue-cookies';
+import { useRoute, useRouter } from 'vue-router'
 
 const { proxy } = getCurrentInstance();
+const route = useRoute();
+const router = useRouter();
 
 const menuList = ref([
   {
@@ -133,6 +138,13 @@ const init = () => {
   console.log("用户名是：" + userInfo.value.nickName + ",头像是：" + userInfo.value.avatar);
 }
 init();
+
+const activePath = ref(null);
+
+watch(route, (newVal, oldVal) => {
+  console.log(newVal);
+  activePath.value = newVal.path;
+}, { immediate: true, deep: true });
 
 
 </script> 
@@ -217,13 +229,19 @@ init();
         }
 
         .sub-menu {
-          padding-left: 25px;
           font-size: 14px;
 
           .sub-menu-item {  
+            padding: 0px 10px 0px 33px;
             display: block;
             cursor: pointer;
-            line-height: 30px;
+            line-height: 40px;
+            text-decoration: none;
+            color: #3f4042;
+          }
+
+          .sub-menu-item:hover {
+            background: #ddd;
           }
         }
       }

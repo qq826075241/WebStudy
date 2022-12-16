@@ -9,8 +9,20 @@ const routes = [
   },
   {
     name: '框架页',
-    path: '/framework',
-    component: () => import('../views/Framework.vue')
+    path: '/',
+    component: () => import('../views/Framework.vue'),
+    children: [
+      {
+        path: "/blog/list",
+        name: "博客管理",
+        component: () => import('../views/blog/Blog.vue'),
+      },
+      {
+        path: "/blog/category",
+        name: "分类管理",
+        component: () => import('../views/blog/BlogCategory.vue'),
+      }
+    ]
   }
 ]
 
@@ -22,7 +34,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const userInfo = vueCookies.get("userInfo");
-  debugger;
   if(!userInfo && to.path != "/login") {
     router.push("/login");
   }
