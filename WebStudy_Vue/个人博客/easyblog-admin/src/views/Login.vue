@@ -128,7 +128,7 @@
 
       // 登录成功跳转
       setTimeout(() => {
-        router.push("/framework")
+        router.push("/")
       }, 1500);
 
       const loginInfo = {
