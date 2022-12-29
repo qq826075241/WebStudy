@@ -21,7 +21,12 @@
                 </div>
             </template>
         </Table>
-        <Dialog></Dialog>
+        <Dialog :show="dialogConfig.show"
+                :title="dialogConfig.title" 
+                :buttons="dialogConfig.buttons"
+                @close="dialogConfig.show=false">
+            我是内容
+        </Dialog>
     </div>
 
 </template>
@@ -77,6 +82,18 @@ const loadDataList = async () => {
     }
     tableData.list = result.data;
 }
+
+const dialogConfig = reactive({
+    title: "标题",
+    show: true,
+    buttons: [{
+        type: "danger",
+        text: "确定",
+        click: (e) => {
+            console.log("xx");
+        }
+    }]
+})
 
 </script>
 
