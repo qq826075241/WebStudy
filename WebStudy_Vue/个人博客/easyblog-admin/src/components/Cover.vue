@@ -18,8 +18,6 @@ const props = defineProps({
 
 const { proxy } = getCurrentInstance();
 
- 
-
 </script>
 
 <style lang="scss">

@@ -14,6 +14,7 @@ import message from './utils/Message'
 import Table from './components/Table.vue'
 import Cover from './components/Cover.vue'
 import Dialog from './components/Dialog.vue'
+import CoverUpload from './components/CoverUpload.vue'
 
 const app = createApp(App)
 
@@ -28,4 +29,5 @@ app.config.globalProperties.globalInfo = {
 app.component("Table", Table);
 app.component("Cover", Cover);
 app.component("Dialog", Dialog);
+app.component("CoverUpload", CoverUpload);
 app.mount('#app')

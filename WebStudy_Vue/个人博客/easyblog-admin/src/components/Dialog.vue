@@ -80,7 +80,7 @@ const close = () => {
     .dialog-body {
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
-        padding: 10px;
+        padding: 15px;
         min-height: 80px;
     }
     .dialog-footer {

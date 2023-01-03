@@ -1,6 +1,7 @@
 <template>
     <div>
-        <el-button type="danger">新增分类</el-button>
+        <el-button type="danger"
+            @click="showEdit('add')">新增分类</el-button>
         <Table :columns="columns"
                :showPagination="false"
                :dataSource="tableData"
@@ -11,7 +12,8 @@
             </template>
             <template #op="{index,row}">
                 <div class="op">
-                    <a href="javascript:void(0)" class="a-link">修改</a>
+                    <a href="javascript:void(0)" class="a-link"
+                        @click="showEdit('update',row)">修改</a>
                     <el-divider direction="vertical"></el-divider>
                     <a href="javascript:void(0)" class="a-link">删除</a>
                     <el-divider direction="vertical"></el-divider>
@@ -24,8 +26,37 @@
         <Dialog :show="dialogConfig.show"
                 :title="dialogConfig.title" 
                 :buttons="dialogConfig.buttons"
-                @close="dialogConfig.show=false">
-            我是内容
+                @close="dialogConfig.show=false"
+                width="500px">
+                <el-form :model="formData" 
+                         :rules="rules" 
+                         ref="formDataRef">
+                    <el-form-item label="名称"
+                                  prop="account">
+                        <el-input placeholder="请输入名称"
+                            v-model="formData.categoryName">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="封面"
+                                  prop="cover">
+                        <CoverUpload></CoverUpload>
+                    </el-form-item>
+                    <el-form-item label="简介">
+                        <el-input placeholder="请输入简介"
+                                  v-model="formData.categoryDesc" 
+                                  type="textarea"
+                                  :autosize="{minRows:4, maxRows:4}">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-checkbox v-model="formData.rememberMe"
+                                    :value="rememberMe"
+                                    :true-label="1" :false-label="2">记住我</el-checkbox>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" :style="{width:'100%'}" @click="login" >登录</el-button>
+                    </el-form-item>
+                </el-form>
         </Dialog>
     </div>
 
@@ -35,6 +66,7 @@
 
 import { reactive, getCurrentInstance } from 'vue';
 import Cover from '../../components/Cover.vue';
+import CoverUpload from '../../components/CoverUpload.vue';
 
 const { proxy } = getCurrentInstance();
 
@@ -83,6 +115,7 @@ const loadDataList = async () => {
     tableData.list = result.data;
 }
 
+// 新增，修改
 const dialogConfig = reactive({
     title: "标题",
     show: true,
@@ -94,6 +127,12 @@ const dialogConfig = reactive({
         }
     }]
 })
+
+const formData = reactive({})
+const rules = {}
+const showEdit = (type, data) => {
+    dialogConfig.show = true;
+}
 
 </script>
 
