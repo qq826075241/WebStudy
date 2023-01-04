@@ -8,7 +8,8 @@
             <template v-if="modelValue">
                 <img :src="proxy.globalInfo.imageUrl + modelValue">
             </template>
-            <span class="iconfont icon-jiahao" v-else></span>
+            <span class="iconfont icon-jiahao"
+                v-else></span>
         </div>
     </el-upload>
 </template>
@@ -32,18 +33,16 @@ const api = {
 
 const emit = defineEmits();
 const uploadImage = async (file) => {
-    console.log(file);
     let result = await proxy.Request({
         url:api.uploadUrl,
-        dataType:"file",
+        dataType:"file", 
         params:{
             file:file.file,
             type:0,
         }
     })
     const fileName = result.data.fileName
-    emit("update:modelValue",fileName);
-
+    emit("update:modelValue", fileName);
 }
 
 </script>
@@ -60,6 +59,9 @@ const uploadImage = async (file) => {
     .iconfont {
         font-size: 30px;
         color: rgb(149, 143, 143);
+    }
+    img {
+        width: 100%;
     }
 }
 

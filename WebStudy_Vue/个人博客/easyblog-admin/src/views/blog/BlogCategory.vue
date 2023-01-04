@@ -39,22 +39,15 @@
                     </el-form-item>
                     <el-form-item label="封面"
                                   prop="cover">
-                        <CoverUpload></CoverUpload>
+                        <CoverUpload v-model="formData.cover"></CoverUpload>
                     </el-form-item>
-                    <el-form-item label="简介">
+                    <el-form-item label="简介" 
+                                  prop="categoryDesc">
                         <el-input placeholder="请输入简介"
                                   v-model="formData.categoryDesc" 
                                   type="textarea"
                                   :autosize="{minRows:4, maxRows:4}">
                         </el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-checkbox v-model="formData.rememberMe"
-                                    :value="rememberMe"
-                                    :true-label="1" :false-label="2">记住我</el-checkbox>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" :style="{width:'100%'}" @click="login" >登录</el-button>
                     </el-form-item>
                 </el-form>
         </Dialog>
@@ -64,7 +57,7 @@
  
 <script setup>
 
-import { reactive, getCurrentInstance } from 'vue';
+import { reactive, getCurrentInstance, nextTick } from 'vue';
 import Cover from '../../components/Cover.vue';
 import CoverUpload from '../../components/CoverUpload.vue';
 
@@ -132,6 +125,12 @@ const formData = reactive({})
 const rules = {}
 const showEdit = (type, data) => {
     dialogConfig.show = true;
+    if(type == "add") {
+        dialogConfig.title = "新增分类";
+    } else if(type == "edit") {
+        dialogConfig.title = "编辑分类";
+        Object.assign(formData, data)
+    }
 }
 
 </script>
