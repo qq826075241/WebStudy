@@ -57,14 +57,15 @@
  
 <script setup>
 
-import { reactive, getCurrentInstance, nextTick } from 'vue';
+import { reactive, getCurrentInstance, nextTick, ref } from 'vue';
 import Cover from '../../components/Cover.vue';
 import CoverUpload from '../../components/CoverUpload.vue';
 
 const { proxy } = getCurrentInstance();
 
 const api = {
-    "loadDataList": "/category/loadAllCategory4Blog"
+    "loadDataList": "/category/loadAllCategory4Blog",
+    "saveBlog": "/category/saveCategory4Blog",
 }
 const columns = [{
     label: "封面",
@@ -111,26 +112,45 @@ const loadDataList = async () => {
 // 新增，修改
 const dialogConfig = reactive({
     title: "标题",
-    show: true,
+    show: false,
     buttons: [{
         type: "danger",
         text: "确定",
         click: (e) => {
-            console.log("xx");
+            submitForm();
         }
     }]
 })
 
-const formData = reactive({})
-const rules = {}
+const formData = reactive({});
+const rules = {
+    categoryName: [{required:true, message:"请输入分类名称"}]
+};
+const formDataRef = ref();
 const showEdit = (type, data) => {
     dialogConfig.show = true;
-    if(type == "add") {
-        dialogConfig.title = "新增分类";
-    } else if(type == "edit") {
-        dialogConfig.title = "编辑分类";
-        Object.assign(formData, data)
-    }
+    nextTick(() => {
+        formDataRef.value.resetFields();
+        if(type == "add") {
+            dialogConfig.title = "新增分类";
+        } else if(type == "update") {
+            dialogConfig.title = "编辑分类";
+            Object.assign(formData, data)
+        }
+    })
+}
+const submitForm = () => {
+    formDataRef.value.validate(async (valid) => {
+        if(!valid) {
+            return;
+        }
+
+        let params = {};
+        Object.assign(params, formData);
+        let result = await proxy.Request({
+            url: api.saveCategory
+        })
+    })
 }
 
 </script>

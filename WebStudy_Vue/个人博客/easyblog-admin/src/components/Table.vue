@@ -12,7 +12,7 @@
       <!--selection选择框-->
       <el-table-column v-if="options.selectType && options.selectType == 'checkbox'"
                         type="selection"
-                        width="50"
+                        width ="50"
                         align="center"></el-table-column>
       <!--序号-->
       <el-table-column v-if="options.showIndex"
