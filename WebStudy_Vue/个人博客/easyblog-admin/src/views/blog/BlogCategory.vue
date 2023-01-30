@@ -15,7 +15,8 @@
                     <a href="javascript:void(0)" class="a-link"
                         @click="showEdit('update',row)">修改</a>
                     <el-divider direction="vertical"></el-divider>
-                    <a href="javascript:void(0)" class="a-link">删除</a>
+                    <a href="javascript:void(0)" class="a-link" 
+                        @click="del(row)">删除</a>
                     <el-divider direction="vertical"></el-divider>
                     <a href="javascript:void(0)" class="a-link">上移</a>
                     <el-divider direction="vertical"></el-divider>
@@ -65,7 +66,8 @@ const { proxy } = getCurrentInstance();
 
 const api = {
     "loadDataList": "/category/loadAllCategory4Blog",
-    "saveBlog": "/category/saveCategory4Blog",
+    "saveCategory": "/category/saveCategory4Blog",
+    "delCategory": "/category/delCategory4Blog",
 }
 const columns = [{
     label: "封面",
@@ -148,8 +150,31 @@ const submitForm = () => {
         let params = {};
         Object.assign(params, formData);
         let result = await proxy.Request({
-            url: api.saveCategory
+            url: api.saveCategory,
+            params,
         })
+        if(!result) {
+            return;
+        }
+        dialogConfig.show = false;
+        proxy.Message.success("保存成功");
+        loadDataList();
+    })
+}
+
+// 删除
+const del = (data) => {
+    proxy.Confirm("你确定要删除" + data.categoryName, async () => {
+        let result = await proxy.Request({
+            url:api.delCategory,
+            params: {
+                categoryId: data.categoryId,
+            }
+        })
+        if(!result) {
+            return;
+        }
+        loadDataList();
     })
 }
 

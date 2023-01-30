@@ -10,7 +10,8 @@ import "./assets/icon/iconfont.css"
 import './assets/main.css'
 
 import Request from './utils/Request'
-import message from './utils/Message'
+import Message from './utils/Message'
+import Confirm from './utils/Confirm'
 import Table from './components/Table.vue'
 import Cover from './components/Cover.vue'
 import Dialog from './components/Dialog.vue'
@@ -22,7 +23,8 @@ app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)
 app.config.globalProperties.Request = Request
-app.config.globalProperties.message = message
+app.config.globalProperties.Message = Message
+app.config.globalProperties.Confirm = Confirm
 app.config.globalProperties.globalInfo = {
     imageUrl: "/api/file/getImage/"
 }

@@ -124,7 +124,7 @@
         return;
       }
 
-      proxy.message.success("登录成功");
+      proxy.Message.success("登录成功");
 
       // 登录成功跳转
       setTimeout(() => {
