@@ -83,6 +83,11 @@ a.a-link {
   color: rgb(53, 118, 237);
 }
 
+.not-allow {
+  cursor: not-allowed;
+  color: #ddd;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

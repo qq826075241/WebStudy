@@ -18,9 +18,11 @@
                     <a href="javascript:void(0)" class="a-link" 
                         @click="del(row)">删除</a>
                     <el-divider direction="vertical"></el-divider>
-                    <a href="javascript:void(0)" class="a-link">上移</a>
+                    <a href="javascript:void(0)" 
+                        :class="[index==0?'not-allow':'a-link']">上移</a>
                     <el-divider direction="vertical"></el-divider>
-                    <a href="javascript:void(0)" class="a-link">下移</a>
+                    <a href="javascript:void(0)" 
+                        :class="[index==tableData.list.length-1?'not-allow':'a-link']">下移</a>
                 </div>
             </template>
         </Table>
