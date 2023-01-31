@@ -19,10 +19,12 @@
                         @click="del(row)">删除</a>
                     <el-divider direction="vertical"></el-divider>
                     <a href="javascript:void(0)" 
-                        :class="[index==0?'not-allow':'a-link']">上移</a>
+                        :class="[index==0?'not-allow':'a-link']"
+                        @click="changeSort(index,'up')">上移</a>
                     <el-divider direction="vertical"></el-divider>
                     <a href="javascript:void(0)" 
-                        :class="[index==tableData.list.length-1?'not-allow':'a-link']">下移</a>
+                        :class="[index==tableData.list.length-1?'not-allow':'a-link']"
+                        @click="changeSort(index,'down')">下移</a>
                 </div>
             </template>
         </Table>
@@ -70,6 +72,7 @@ const api = {
     "loadDataList": "/category/loadAllCategory4Blog",
     "saveCategory": "/category/saveCategory4Blog",
     "delCategory": "/category/delCategory4Blog",
+    "changeSort": "/category/changeCategorySort4Blog",
 }
 const columns = [{
     label: "封面",
@@ -178,6 +181,27 @@ const del = (data) => {
         }
         loadDataList();
     })
+}
+
+// 修改排序
+const changeSort = async(index, type) => {
+    let categoryList = tableData.list;
+    if(type == "down" && index === categoryList.length - 1 || type === 'up' && index === 0) {
+        return;
+    }
+    let number = type == 'down'?1:-1;
+    let temp = categoryList[index];
+    categoryList.splice(index, 1);
+    categoryList.splice(index + number, 0, temp);
+    // console.log(JSON.stringify(categoryList));
+    let result = await proxy.Request({
+        url: api.changeSort,
+        dataType: "json",
+        params: categoryList,
+    })
+    if(!result) {
+        return;
+    }
 }
 
 </script>
