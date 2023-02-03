@@ -15,9 +15,14 @@
                 <el-col :span="5">
                     <el-form-item label="状态" 
                                   prop="status">
-                        <el-input placeholder="请输入状态"
-                                  v-model="searchformData.status">
-                        </el-input>
+                        <el-select placeholder="请选择状态"
+                                  v-model="searchformData.status"
+                                  clearable>
+                            <el-option :value="0" 
+                                       label="草稿"></el-option>
+                            <el-option :value="1" 
+                                       label="已发布"></el-option>
+                        </el-select>
                     </el-form-item>
                 </el-col>
             </el-row>
